@@ -1,0 +1,32 @@
+h1{
+    background: #58ACFA;
+    padding:10px;
+    border-radius:3px;
+}
+
+hr{
+    height:2px;
+    background:#81BEF7;
+}
+.agregar{
+    background:#04B4AE;
+    padding:10px 16px;
+    border:0px;
+    color:white;
+    font-size:17px;
+}
+.eliminar{
+    background:#04B4AE;
+    padding:10px 16px;
+    border:0px;
+    color:white;
+    font-size:17px;
+}
+.espacio{
+    padding: 10px;
+}
+
+table{
+    border:1px solid #A4A4A4;
+    padding: 20px;
+}

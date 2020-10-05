@@ -1,0 +1,140 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Punto de venta Equipo de cómputo</title>
+<link rel="stylesheet" href="css/style.css">
+
+<script language="JavaScript" type="text/javascript">
+function agregarFila()
+{             
+  var tbl = document.getElementById('TablaCalculadora');
+  var ultimaFila = tbl.rows.length;
+
+  var iteracion = ultimaFila;
+  var filaactual = tbl.insertRow(ultimaFila);
+ 
+  // Primera celda
+  var primeracelda = filaactual.insertCell(0);
+  var textoNodo = document.createTextNode(iteracion);
+  primeracelda.appendChild(textoNodo);
+ 
+  //Segunda celda
+  var segundacelda = filaactual.insertCell(1);
+  var selector1 = document.createElement('select');
+  selector1.name = 'Descripcion' + iteracion;
+  selector1.id = 'Descripcion' + iteracion; 
+  selector1.style.width= '200px';
+  selector1.options[0] = new Option('Equipo de escritorio', 'valor1');
+  selector1.options[1] = new Option('Servidor', 'valor2');
+  segundacelda.appendChild(selector1);
+ 
+  //Tercera celda
+  var terceracelda = filaactual.insertCell(2);
+  var selector2 = document.createElement('select');
+  selector2.name = 'precio' + iteracion;
+  selector2.id = 'precio' + iteracion;
+  selector2.style.width= '150px';
+  selector2.options[0] = new Option('1', 'valor0');
+  selector2.options[1] = new Option('2', 'valor1');
+  terceracelda.appendChild(selector2);
+ 
+  //Cuarta celda
+  var cuartacelda = filaactual.insertCell(3);
+  var selector3 = document.createElement('select');
+  selector3.id = 'cantidad' + iteracion;
+  selector3.name = 'cantidad' + iteracion;
+  selector3.style.width= '150px'; 
+  selector3.options[0] = new Option('1', 'valor0');
+  selector3.options[1] = new Option('2', 'valor1');
+  cuartacelda.appendChild(selector3);
+ 
+  //Quinta celda
+  var quintacelda = filaactual.insertCell(4);
+  var cuadrotexto1 = document.createElement('input');
+  cuadrotexto1.type = 'text';
+  cuadrotexto1.name = 'txtfila' + iteracion;
+  cuadrotexto1.id = 'txtfila' + iteracion;
+  cuadrotexto1.size = 20;
+  cuadrotexto1.disabled = 'disabled';
+
+//  cuadrotexto1.onkeypress = keyPressTest;
+  quintacelda.appendChild(cuadrotexto1); 
+}
+
+function quitarFila()
+{
+  var tbl = document.getElementById('TablaCalculadora');
+  var ultimaFila = tbl.rows.length;
+  if (ultimaFila > 2) tbl.deleteRow(ultimaFila - 1);
+}
+</script>
+<script type="text/javascript">
+_uacct = "UA-83058-1";
+urchinTracker();
+</script>
+
+<script>
+    function consumo() {
+                var CantidadPrecio = document.getElementById('precio0').options.selectedIndex;
+                var Precio = document.getElementById('precio0').options[CantidadPrecio].text;
+                var CantidadTI = document.getElementById('cantidad0').options.selectedIndex;         
+                var Cantidad = document.getElementById('cantidad0').options[CantidadTI].text;
+
+            document.getElementById('txtfila0').value = Precio * Cantidad;
+       
+    }
+</script>
+
+</head>
+
+<body>
+<br>
+<h1>Punto de venta Equipo de cómputo</h1>
+<hr>
+<br>
+<form action="Calculadora.html" method="get">
+<input type="button" class="agregar" value="Agregar" onclick="agregarFila();"/>
+<input type="button" class="eliminar" value="Eliminar" onclick="quitarFila();" />
+<table border="0" id="TablaCalculadora">
+    
+    <div class="espacio">
+
+    </div>
+    <tr>
+        <td>No.</td>
+        <td>Descripci&oacute;n</td>
+        <td>Precio Unitario</td>
+        <td>Cantidad de equipos</td>
+        <td>Subtotal</td>
+    </tr>
+    <tr>
+                <td>1</td>
+        <td>
+                <select name="Descripcion0" id="Descripcion0" style="width:200px">
+                    <option value="valor1">Equipo de escritorio</option>
+                    <option value="valor2">Servidor</option>
+                    <option value="valor2">Teclado</option>
+                    <option value="valor2">Cable UTP</option>
+                                               </select>                           
+        </td>
+        <td>
+                <select name="precio0" id="precio0" style="width:150px">
+                    <option value="valor1">1</option>
+                    <option value="valor2">2</option>                   
+            </select>
+        </td>
+        <td>
+                <select name="cantidad0" id="cantidad0" style="width:150px" onblur="javascript:consumo()">
+                    <option value="valor1">1</option>
+                    <option value="valor2">2</option>             
+            </select>
+        </td>
+        <td>
+                <input type="text" name="txtfila0" id="txtfila0" size="20" disabled="disabled"/>
+        </td>
+    </tr>
+</table>
+</form>
+</body>
+</html>
